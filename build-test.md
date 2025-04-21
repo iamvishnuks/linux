@@ -84,3 +84,14 @@ CONFIG_SYSTEM_REVOCATION_KEYS="/usr/local/src/debian/canonical-revoked-certs.pem
    ```bash
    uname -r
    ```
+
+7. **Build and run sample code**:
+   ```bash
+   # Navigate to samples directory
+   cd samples/bpf
+
+   clang -target bpf -O2 -g -c bio_monitor.c -o bio_monitor.o
+   gcc -o bio_monitor_loader bio_monitor_loader.c -lbpf
+   sudo ./bio_monitor_loader -t 30
+   ```
+
